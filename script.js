@@ -3,6 +3,7 @@ const button = document.querySelector("button");
 const button2 = document.querySelector("#button");
 const menu = document.querySelector(".menu");
 const sidebar = document.querySelector("#sidebar");
+let loading = document.querySelector(".loading");
 var light = 0;
 var nilai = 0;
 
@@ -50,4 +51,7 @@ menu.addEventListener("click", function(){
         sidebar.style.boxShadow = "0px 0px 0px";
         nilai = 0;
     }
+});
+window.addEventListener("load", function(){
+    loading.style.display = "none";
 });
