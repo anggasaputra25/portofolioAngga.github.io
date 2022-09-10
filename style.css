@@ -1,40 +1,194 @@
-html{
-    scroll-behavior: smooth;
-}
-body{
+*{
     margin: 0;
     padding: 0;
     color: white;
-    background-color: #222;
     font-family: 'Poppins', sans-serif;
 }
-b{
-    color: rgb(255, 136, 0);
+body{
+    overflow-x: hidden;
+    background-color: #111;
+}
+#circle{
+    content: "";
+    z-index: -2;
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    margin-top: 0;
+    margin-left: 50%;
+    background-color: aliceblue;
+    border-radius: 50%;
+}
+@keyframes animasiLight{
+    0%{
+        border-radius: 50%;
+        margin-top: 0;
+        transform: rotate(0deg);
+    }
+    40%{
+        border-radius: 50%;
+    }
+    70%{
+        border-radius: 0;
+        margin-top: 50vh;
+    }
+    75%{
+        margin-top: 50vh;
+        border-radius: 0;
+        width: 30px;
+        height: 30px;
+    }
+    80%{
+        transform: rotate(360deg);
+        width: 100%;
+        height: 100%;
+    }
+    85%{
+        margin-top: 0;
+        margin-left: 0;
+        transform: rotate(360deg);
+        width: 100%;
+        height: 100%;
+        margin-left: 50%;
+    }
+    90%{
+        margin-top: 0;
+        margin-left: 0;
+        transform: rotate(360deg);
+        width: 100%;
+        height: 100%;
+        margin-left: 50%;
+    }
+    100%{
+        margin-top: 0;
+        margin-left: 0;
+        transform: rotate(360deg);
+        width: 100%;
+        height: 300%;
+        border-radius: 0;
+    }
+}
+@keyframes animasiLightRev{
+    100%{
+        border-radius: 50%;
+        margin-top: 0;
+        transform: rotate(0deg);
+    }
+    60%{
+        border-radius: 50%;
+    }
+    30%{
+        border-radius: 0;
+        margin-top: 50vh;
+    }
+    35%{
+        margin-top: 50vh;
+        border-radius: 0;
+        width: 30px;
+        height: 30px;
+        transform: rotate(360deg);
+    }
+    20%{
+        transform: rotate(360deg);
+        width: 100%;
+        height: 100%;
+    }
+    25%{
+        margin-top: 0;
+        margin-left: 0;
+        transform: rotate(360deg);
+        width: 100%;
+        height: 100%;
+        margin-left: 50%;
+    }
+    10%{
+        margin-top: 0;
+        margin-left: 0;
+        transform: rotate(360deg);
+        width: 100%;
+        height: 100%;
+        margin-left: 50%;
+    }
+    0%{
+        margin-top: 0;
+        margin-left: 0;
+        transform: rotate(360deg);
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+strong{
+    color: blue;
+    text-shadow: 0px 0px 3px rgba(0, 0, 255, 0.404);
+}
+hr{
+    width: 200px;
+    height: 2px;
+    margin: 0 auto;
+    background-color: white;
+    margin-bottom: 20px;
+}
+html{
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar{
+    width: 20px;
+}
+::-webkit-scrollbar-track{
+    background-color: black;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: #111;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: white;
 }
 
-/* loading start */
-.loading{
+/* navbar start */
+nav{
     position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    height: 100vh;
+    height: 100px;
     background-color: black;
-    z-index: 3;
+    cursor: default;
+    z-index: 2;
 }
-.loading::after{
-    content: "";
-    position: absolute;
-    height: 40px;
-    width: 40px;
-    background-color: blue;
-    margin-top: 100px;
-    box-shadow: 0px 0px 30px blue;
-    border-radius: 10px;
-    animation: infinite alternate animasiLoading 2s;
+nav .container{
+    width: 80%;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
-@keyframes animasiLoading{
+nav ol{
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: end;
+}
+nav li a{
+    text-decoration: none;
+    margin: 5px;
+    padding: 5px 15px;
+    transition: all 0.5s linear;
+}
+nav li a:hover{
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 10px white;
+}
+nav button{
+    cursor: pointer;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+}
+nav button:hover{
+    animation: forwards animasiSun 3s;
+}
+@keyframes animasiSun{
     0%{
         transform: rotate(0deg);
     }
@@ -42,300 +196,403 @@ b{
         transform: rotate(360deg);
     }
 }
-/* loading end */
+/* navbar end */
 
-/*start navbar*/
-#navbar{
-    overflow: auto;
-    background-color: #111;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    right: 0;
-    color: white;
-    z-index: 2;
-}
-#navbar h1{
-    margin-left: 20px;
-    font-family: 'Ubuntu', sans-serif;
-}
-#navbar ol{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: end;
-    width: 100%;
-    font-family: 'Roboto', sans-serif;
-}
-#navbar li{
-    float: left;
-}
-#navbar li:hover{
-    transform: translateY(-3px);
-    transition: all 0.1s linear;
-}
-#navbar li a{
-    text-decoration: none;
-    color: white;
-    margin: 5px;
-    padding: 5px;
-    transition: all 0.5s linear;
-}
-#navbar button{
-    margin-right: 20px;
-    font-size: 20px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    color: white;
-}
-.menu{
-    display: flex;
-    justify-content: end;
-    width: 100%;
+/* menuBar start */
+#menuBar{
     display: none;
-    animation: animasi2 2s alternate;
+    height: 100%;
+    width: 100%;
+    justify-content: end;
+    align-items: center;
 }
-.menu i{
-    font-size: 40px;
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-top: 10px;
+#menuBar .menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100px;
+}
+#menuBar h4{
     padding-bottom: 10px;
+    font-size: 40px;
+    font-weight: 300;
+    transform: rotate(90deg);
 }
-/*end navbar*/
+.light #menuBar h4{
+    color: white;
+}
+#menuBar .line1{
+    margin-top: -20px;
+}
+#menuBar .line3{
+    margin-top: 20px;
+}
+@keyframes line1{
+    0%{
+        margin-top: -20px;
+    }
+    100%{
+        margin-top: 0;
+    }
+}
+@keyframes line1rev{
+    100%{
+        margin-top: -20px;
+    }
+    0%{
+        margin-top: 0;
+    }
+}
+@keyframes line3{
+    0%{
+        margin-top: 20px;
+    }
+    100%{
+        margin-top: 0;
+    }
+}
+@keyframes line3rev{
+    1000%{
+        margin-top: 20px;
+    }
+    0%{
+        margin-top: 0;
+    }
+}
+/* menuBar end */
 
 /* sidebar start */
 #sidebar{
     z-index: 1;
+    transition: all 0.5s linear;
+    padding-top: 100px;
     position: fixed;
-    align-items: center;
-    bottom: 0;
-    top: 0;
     width: 50%;
-    left: -50%;
-    background-color: rgba(0, 0, 0, 0.90);
-    display: none;
+    left: -60%;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.882);
 }
-#sidebar ol{
+#sidebar ul{
     list-style: none;
-    margin: 0;
-    padding: 0;
     width: 100%;
-    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 #sidebar li{
     display: flex;
-    padding: 0px;
-    transition: all 0.5s linear;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    height: 200px;
 }
 #sidebar li a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
-    font-size: 16px;
-    color: white;
     width: 100%;
-    text-align: center;
-    padding: 50px;
-    transition: all 0.5s ease;
+    height: 100%;
 }
-#sidebar li:hover{
-    background-color: white;
-}
-#sidebar li a:hover{
-    color: black;
-}
-#sidebar button{
-    font-size: 40px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    background-color: transparent;
+.light #sidebar li a{
     color: white;
 }
 /* sidebar end */
 
-/*start home*/
+/* home start */
 #home{
+    position: relative;
+    overflow: hidden;
     height: 100vh;
-}
-#home .row{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
     padding-top: 100px;
+    box-sizing: border-box;
+    cursor: default;
+}
+#home .container{
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 #home .col{
-    display: flex;
-    justify-content: center;
     width: 50%;
-    animation: animasi2 2s alternate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-#home .desk h1, h2, h3{
-    margin: 0;
-}
-#home .image{
-    background-image: url("assets/profil.jpeg");
-    filter: saturate(50%);
+#home .gambar{
     background-size: cover;
-    background-position: 0 -100px;
-    border-radius: 10px;
-    box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
-    width: 500px;
-    height: 520px;
+    background-position-y: -80px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-image: url("assets/profil.jpeg");
+}
+#home .gambar::after{
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 30px rgb(255, 0, 81);
+    background-color: rgb(255, 0, 81);
+    animation: animasiProfilAfter infinite alternate 20s;
+    transition: all 1s linear;
+}
+@keyframes animasiProfilAfter{
+    0%{
+        transform: rotate(30deg);
+    }
+    100%{
+        transform: rotate(340deg);
+    }
 }
 #home .sosmed{
-    overflow: auto;
-    margin-top: 50px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: animasi 2s alternate;
 }
-#home .sosmed h3{
-    margin: 0;
-    padding: 0px;
+#home .sosmed a{
+    margin: 5px;
 }
-#home .sosmed ol{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    overflow: auto;
-}
-#home ol h2{
-    display: flex;
-    flex-direction: row;
-}
-#home .sosmed li a{
-    text-decoration: none;
-    color: white;
-    border-radius: 5px;
-    margin: 10px;
-    transition: all 0.5s linear;
-}
-/* animation start */
-@keyframes animasi{
-    0%{
-        margin-left: 300%;
-        width: 100%;
-    }
-    50%{
-        margin-left: -10%;
-    }
-    100%{
-        margin-left: 0%;
-    }
-}
-@keyframes animasi2{
-    0%{
-        margin-top: -300%;
-    }
-    100%{
-        margin-top: 0%;
-    }
-}
-/* animation end */
-/*home end*/
+/* home end */
 
-/* skill start */
-#skill{
-    padding-top: 15px;
+/* project start */
+#projects{
+    height: 100vh;
+    padding-top: 100px;
+    box-sizing: border-box;
+    cursor: default;
+}
+#projects .container{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
-#skill h1{
-    text-align: center;
-    margin-top: 60px;
-}
-#skill .row{
+#projects .row{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-#skill .col{
     text-align: center;
+    width: 80%;
+}
+#projects .col{
     display: flex;
-    padding: 20px;
-    margin: 20px;
-    width: 600px;
-    box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 200px;
+    box-shadow: -5px 5px 10px black;
+    margin: 10px;
+    transition: transform .2s ease-in-out;
 }
-#skill .info h1{
-    margin-top: 20px;
+#projects #project1:hover, #projects #project2:hover{
+    transform: scale(1.2);
+    box-shadow: none;
 }
-/* skill end */
+#projects #project3::before, #projects #project4::before{
+    content: "Belum ada project baru :(";
+    color: blue;
+    text-shadow: 0px 0px 3px blue;
+    margin-top: 70px;
+    transition: all 1s linear;
+}
+#projects #project3::after, #projects #project4::after{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    box-shadow: 0px 0px 30px blue;
+    animation: alternate infinite animasiKotak 10s;
+    transition: all 1s linear;
+}
+@keyframes animasiKotak{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+#projects a{
+    text-decoration: none;
+}
+#projects #project1{
+    background-image: url("assets/learnCode.png");
+    background-size: cover;
+}
+#projects #project2{
+    background-image: url("assets/fourNolep.png");
+    background-size: cover;
+}
+/* project end */
 
 /* about start */
 #about{
     height: 100vh;
+    padding-top: 100px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    cursor: default;
+}
+#about .container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-}
-#about h3{
-    margin: 20px;
-    text-align: center;
+    height: 100%;
 }
 #about .row{
-    width: 50%;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: rgb(255, 136, 0);
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
-#about .row h3{
-    margin-bottom: 0px;
+#about button{
+    margin: 5px;
+    padding: 5px;
+    width: 150px;
+    background-color: transparent;
+    border: solid 2px white;
+    transition: all 0.5s linear;
+    cursor: pointer;
+}
+#about button:hover{
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 20px white;
+}
+#about .wordAngga, #about .wordAngga .angga{
+    width: 50%;
+    background-color: rgb(255, 0, 81);
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0px 0px 30px rgba(255, 0, 81, 0);
+    color: white;
+    transition: all 0.5s linear;
+}
+#about .wordAngga{
+    margin-left: -200%;
+}
+@keyframes wordAngga{
+    0%{
+        margin-left: -200%;
+        box-shadow: 0px 0px 30px rgba(255, 0, 81, 0);
+    }
+    80%{
+        margin-left: 0;
+        box-shadow: 0px 0px 30px rgba(255, 0, 81, 0);
+    }
+    100%{
+        margin-left: 0;
+        box-shadow: 0px 0px 30px rgb(255, 0, 81);
+    }
+}
+@keyframes wordAngga2{
+    0%{
+        margin-left: 0;
+        box-shadow: 0px 0px 30px rgb(255, 0, 81);
+    }
+    20%{
+        margin-left: 0;
+        box-shadow: 0px 0px 30px rgba(255, 0, 81, 0);
+    }
+    100%{
+        margin-left: -200%;
+    }
+}
+#about .wordAngga .angga{
+    margin-top: 0;
+}
+#about .wordTeam{
+    width: 50%;
+    background-color: blue;
+    padding: 20px;
+    margin-top: 30px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 255, 0);
+    color: white;
+    transition: all 0.5s linear;
+    margin-right: -200%;
+}
+@keyframes wordTeam{
+    0%{
+        margin-right: -200%;
+        box-shadow: 0px 0px 30px rgba(0, 0, 255, 0);
+    }
+    80%{
+        margin-right: 0;
+        box-shadow: 0px 0px 30px rgba(0, 0, 255, 0);
+    }
+    100%{
+        margin-right: 0;
+        box-shadow: 0px 0px 30px rgb(0, 0, 255);
+    }
+}
+@keyframes wordTeam2{
+    0%{
+        margin-right: 0;
+        box-shadow: 0px 0px 30px rgb(0, 0, 255);
+    }
+    20%{
+        margin-right: 0;
+        box-shadow: 0px 0px 30px rgba(0, 0, 255, 0);
+    }
+    100%{
+        margin-right: -200%;
+    }
 }
 /* about end */
 
 /* contact start */
 #contact{
     height: 100vh;
+    padding-top: 100px;
+    box-sizing: border-box;
+}
+#contact .container{
+    height: 100%;
+    width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    transition: all 0.5s ease;
 }
 #contact form{
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-    height: 530px;
-    width: 400px;
-    padding: 5px;
-    background-color: rgb(0, 0, 184);
+    width: 300px;
+    height: 400px;
+    padding: 20px;
+    background-color: blue;
+    text-align: center;
 }
 #contact input{
-    margin-bottom: 30px;
-    width: 300px;
+    width: 100%;
+    margin: 0px 0px 15px 0px;
     background-color: transparent;
     border: none;
-    border-bottom: solid rgba(255, 255, 255, 0.507);
-    transition: all 0.5s ease;
+    border-bottom: solid 2px rgba(255, 255, 255, 0.478);
+    transition: all 0.5s linear;
 }
 #contact input:hover{
-    border-bottom: solid white;
+    border-bottom: solid 2px rgb(255, 255, 255);
 }
 #contact textarea{
-    width: 300px;
-    padding: 10px;
-    margin-bottom: 30px;
-    box-sizing: border-box;
+    width: 100%;
+    margin: 0px 0px 15px 0px;
+    background-color: rgb(0, 0, 180);
 }
 #contact button{
     background-color: transparent;
-    color: white;
-    padding: 5px 20px;
-    font-family: "Poppins", sans-serif;
-    box-sizing: border-box;
+    border: solid 2px white;
+    padding: 5px;
     cursor: pointer;
-    border-color: white;
-    transition: all 0.5s ease;
+    transition: all 0.5s linear;
 }
 #contact button:hover{
     background-color: white;
@@ -345,104 +602,130 @@ b{
 
 /* footer start */
 footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: black;
     height: 50px;
-    background-color: #111;
-    transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 /* footer end */
 
 /* lightMode start */
-.light{
-    background-color: aliceblue;
+.light *{
+    color: black;
+    transition: color 3s ease;
+}
+.light strong{
+    color: blue;
+}
+.light hr{
+    background-color: black;
+}
+.light nav li a{
+    transition: all 0.5s linear;
+}
+.light nav li a:hover{
     color: black;
 }
-.light #navbar{
-    background-color: white;
-    color: black;
-}
-.light #navbar li a{
-    color: black;
-}
-#navbar li a:hover{
-    color: rgb(255, 136, 0);
-}
-.light #navbar button{
-    color: black;
-}
-.light #sidebar{
-    background-color: rgb(240, 248, 255, 0.90);
-}
-.light #sidebar li a{
-    color: black;
-}
-.light #sidebar button{
-    color: black;
-}
-.light #home .sosmed li a{
-    color: black;
-}
-#contact{
+.light nav h1, .light nav li a, .light nav #sun i{
     color: white;
 }
-.light footer{
-    background-color: white;
+.light #home .gambar::after{
+    background-color: blue;
+    box-shadow: 1px 1px 30px blue;
+}
+.light #projects #project3::before, .light #projects #project4::before{
+    color: rgb(255, 0, 81);
+    text-shadow: 0px 0px 3px rgb(255, 0, 81);
+}
+.light #projects #project3::after, .light #projects #project4::after{
+    background-color: rgb(255, 0, 81);
+    box-shadow: 0px 0px 30px rgb(255, 0, 81);
+}
+.light #about button{
+    border: 2px black solid;
+}
+.light #about button:hover{
+    background-color: black;
+    color: white;
+    box-shadow: 0px 0px 30px black;
+}
+.light #contact form label, .light #contact form button{
+    color: white;
+}
+.light #contact form button:hover{
+    color: black;
+}
+.light footer h4{
+    color: white;
 }
 /* lightMode end */
 
-/* androidMode start */
-@media (max-width: 910px){
-    #navbar ol{
+/* display tab start */
+@media(max-width:1054px){
+    #home .col{
+        width: 100%;
+    }
+    #projects{
+        height: max-content;
+        margin-bottom: 100px;
+    }
+    #projects .row{
+        width: 100%;
+    }
+    #projects #project1:hover, #projects #project2:hover{
+        transform: none;
+    }
+    #about{
+        height: max-content;
+        margin-bottom: 100px;
+    }
+}
+@media(max-width:768px){
+    nav ol{
         display: none;
     }
-    #navbar button{
-        display: none;
-    }
-    #navbar .menu{
-        display: flex;
-    }
-    #sidebar{
+    #menuBar{
         display: flex;
     }
     #home{
         height: max-content;
     }
-    #home .row{
-        flex-direction: column;
-        width: 100%;
-    }
     #home .col{
-        width: 100%;
-    }
-    #skill{
-        height: max-content;
-    }
-    #about h3{
-        font-size: small;
-    }
-    #about .row{
-        width: 90%;
-        margin: 5px;
+        margin-bottom: 50px;
     }
 }
-@media(max-width: 500px){
-    #home .image{
-        height: 400px;
+/* display tab end */
+
+/* display hp start */
+@media(max-width:361px){
+    #home{
+        padding-top: 150px;
+        font-size: 12px;
     }
-    #home .desk{
-        padding-bottom: 12px;
+    #home .gambar{
+        width: 300px;
+        height: 300px;
     }
-    #home .desk h1, h2, h3{
-        font-size: 18px;
+    #home .gambar::after{
+        width: 300px;
+        height: 300px;
     }
-    /* #skill{
-        height: max-content;
-    } */
-    #contact form{
-        width: 100%;
+    #home .sosmed h2{
+        font-size: 25px;
+    }
+    #projects{
+        overflow-x: hidden;
+    }
+    #projects .col{
+        max-width: 100%;
+        margin: 10px 0;
+    }
+    #about .wordAngga{
+        width: 70%;
+    }
+    #about .wordTeam{
+        width: 70%;
     }
 }
-/* androidMode end */
-/* tes123 */
+/* display hp end */
